@@ -1,0 +1,63 @@
+Walkthrough of current project architecture and individual role
+	•	DevOps tools used in the last couple of years
+	•	AWS services used in production
+	•	Exposing Kubernetes apps to external traffic
+	•	Purpose of NAT Gateway
+	•	Linux basics (process monitoring, file handling)
+	•	Deployment vs StatefulSet in Kubernetes
+	•	ConfigMap vs Secret
+	•	Network connectivity checks between servers
+	•	CI/CD pipeline experience
+
+✅ Round 2: Technical (60 mins)
+More scenario-based and hands-on questions:
+	•	Cross-account S3 access (Account A → Account B)
+	•	Writing a multi-stage Dockerfile for Node.js
+	•	Handling Terraform state file corruption
+	•	Alternatives to NAT Gateway for private subnet access
+	•	Debugging exited containers
+	•	Importing existing AWS VPC into Terraform
+	•	Blue-green deployment in Kubernetes
+	•	Managing secrets in Terraform (without hardcoding)
+	•	COPY vs ADD in Dockerfile
+	•	Cross-account provisioning using Terraform
+	•	Handling secrets in Docker (PHP + MySQL use case)
+	•	Terraform drift (manual changes vs IaC)
+	•	Kubernetes network policies for pod communication
+	•	Python script: backup files older than 30 days
+	•	Cloud cost optimization strategies
+	•	Geo-location based routing using AWS
+	•	Troubleshooting production Kubernetes issues (ImagePull errors, pod eviction, etc.)
+
+💡 Key Takeaway:
+Strong fundamentals + real-time troubleshooting + hands-on experience with AWS, Kubernetes, Docker, and Terraform are crucial.
+
+If you’re preparing for DevOps roles, focus on practical scenarios rather than just theory.
+
+
+
+==========================================
+
+Interviewer: You have 2 minutes. Explain why a deployment works in Dev but fails in Production.
+
+My answer: Challenge accepted, let’s go!
+
+➤ From a DevOps perspective, this is usually due to environment differences, configuration issues, or infrastructure gaps.
+➤ Environment mismatch - Dev and Prod configs (env vars, secrets, endpoints) are different.
+➤ Secrets issue - Missing or incorrect secrets (DB creds, API keys) in production.
+➤ Resource limits - CPU/memory limits in Prod may cause pods to crash (OOMKilled).
+➤ Image/version mismatch - Different image tags or outdated images deployed in Prod.
+➤ Database / dependency access - Prod services may not have access to DB, cache, or external APIs.
+➤ Networking issues - Security groups, firewall rules, or Kubernetes network policies blocking traffic.
+➤ Ingress / Load Balancer config - Wrong routing, host rules, or SSL issues.
+➤ Scaling differences - Works with 1 replica in Dev but fails under load in Prod.
+➤ Feature flags / configs - Some features enabled only in Prod causing failures.
+➤ Permissions (IAM/RBAC) - Application may not have required permissions in production.
+
+➤ How I debug as a DevOps Engineer:
+ • Check pod logs (kubectl logs)
+ • Describe resources (kubectl describe pod)
+ • Compare Dev vs Prod configs
+ • Verify secrets, env variables
+ • Check ingress / load balancer
+ • Monitor metrics (CPU, memory)
